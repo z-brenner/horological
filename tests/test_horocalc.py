@@ -97,5 +97,25 @@ class BeatsReserveTests(unittest.TestCase):
         self.assertAlmostEqual(r["estimated_power_reserve_h"], 45.5)
 
 
+class NewCommandTests(unittest.TestCase):
+    def test_tachy(self):
+        self.assertAlmostEqual(run("tachy", "--seconds", "30")["units_per_hour"], 120)
+        self.assertAlmostEqual(run("tachy", "--speed", "90")["elapsed_seconds"], 40)
+
+    def test_telemeter(self):
+        self.assertAlmostEqual(run("telemeter", "--seconds", "3")["distance_m"], 1030.26, places=1)
+
+    def test_seconds_pendulum(self):
+        r = run("pendulum", "--period-s", "2")
+        self.assertAlmostEqual(r["length_m"], 0.9936, places=3)
+        self.assertAlmostEqual(r["beats_per_hour"], 3600)
+
+    def test_fit(self):
+        r = run("fit", "--wrist-mm", "170", "--lug-to-lug", "47")
+        self.assertAlmostEqual(r["estimated_flat_wrist_width_mm"], 52.7)
+        self.assertIn("comfortably", r["verdict"])
+        self.assertIn("overhang", run("fit", "--wrist-mm", "150", "--lug-to-lug", "51")["verdict"])
+
+
 if __name__ == "__main__":
     unittest.main()

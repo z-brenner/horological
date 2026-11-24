@@ -14,6 +14,10 @@ Commands
   seiko-serial  Decode a Seiko or Grand Seiko caseback serial.
   gold          Convert between karat and millesimal fineness.
   ligne         Convert between lignes and millimeters.
+  tachy         Tachymeter: speed from elapsed time, or the reverse.
+  telemeter     Distance from the delay between seeing and hearing an event.
+  pendulum      Pendulum period from length, or length from period.
+  fit           Rough maximum lug-to-lug for a wrist size.
 """
 
 from __future__ import annotations
@@ -335,6 +339,102 @@ def cmd_ligne(args: argparse.Namespace) -> dict:
     return {"mm": args.mm, "lignes": args.mm / LIGNE_MM}
 
 
+# ---------------------------------------------------------------- tachy
+
+def cmd_tachy(args: argparse.Namespace) -> dict:
+    if (args.seconds is None) == (args.speed is None):
+        raise SystemExit("tachy: give exactly one of --seconds or --speed")
+    if args.seconds is not None:
+        if args.seconds <= 0:
+            raise SystemExit("tachy: seconds must be positive")
+        seconds = args.seconds
+        speed = 3_600 / seconds * args.distance
+    else:
+        if args.speed <= 0:
+            raise SystemExit("tachy: speed must be positive")
+        speed = args.speed
+        seconds = 3_600 * args.distance / speed
+    result = {
+        "elapsed_seconds": seconds,
+        "distance_units": args.distance,
+        "units_per_hour": speed,
+        "scale_reading_for_one_unit": 3_600 / (seconds / args.distance),
+    }
+    if not 7.2 <= seconds / args.distance <= 60:
+        result["note"] = (
+            "Outside the range of a typical bezel scale, which covers about 7.2 to 60 "
+            "seconds per unit, or 500 down to 60 units per hour."
+        )
+    return result
+
+
+# ---------------------------------------------------------------- telemeter
+
+def cmd_telemeter(args: argparse.Namespace) -> dict:
+    speed_of_sound = 331.3 + 0.606 * args.temp_c
+    meters = speed_of_sound * args.seconds
+    return {
+        "delay_seconds": args.seconds,
+        "air_temperature_c": args.temp_c,
+        "speed_of_sound_m_per_s": speed_of_sound,
+        "distance_m": meters,
+        "distance_km": meters / 1_000,
+        "distance_miles": meters / 1_609.344,
+    }
+
+
+# ---------------------------------------------------------------- pendulum
+
+def cmd_pendulum(args: argparse.Namespace) -> dict:
+    if (args.length_m is None) == (args.period_s is None):
+        raise SystemExit("pendulum: give exactly one of --length-m or --period-s")
+    g = args.gravity
+    if args.length_m is not None:
+        length = args.length_m
+        period = 2 * math.pi * math.sqrt(length / g)
+    else:
+        period = args.period_s
+        length = g * (period / (2 * math.pi)) ** 2
+    return {
+        "length_m": length,
+        "full_period_s": period,
+        "seconds_per_swing": period / 2,
+        "beats_per_hour": 3_600 / (period / 2),
+        "gravity_m_per_s2": g,
+        "note": "Ideal simple pendulum with small swings; real clocks differ slightly.",
+    }
+
+
+# ---------------------------------------------------------------- fit
+
+def cmd_fit(args: argparse.Namespace) -> dict:
+    wrist = args.wrist_mm if args.wrist_mm is not None else args.wrist_in * 25.4
+    flat = wrist * 0.31
+    result = {
+        "wrist_circumference_mm": wrist,
+        "wrist_circumference_in": wrist / 25.4,
+        "estimated_flat_wrist_width_mm": flat,
+        "comfortable_lug_to_lug_up_to_mm": flat * 0.95,
+        "maximum_lug_to_lug_about_mm": flat,
+        "note": (
+            "Rule of thumb only: assumes the flat top of the wrist is about 31 percent "
+            "of its circumference. Wrist shape, case thickness and lug curvature matter. "
+            "Measure the flat width directly if possible."
+        ),
+    }
+    if args.lug_to_lug is not None:
+        ratio = args.lug_to_lug / flat
+        if ratio <= 0.95:
+            verdict = "should sit comfortably within the wrist"
+        elif ratio <= 1.0:
+            verdict = "at the upper limit; try it on"
+        else:
+            verdict = "likely to overhang; try it on before buying"
+        result["lug_to_lug_mm"] = args.lug_to_lug
+        result["verdict"] = verdict
+    return result
+
+
 # ---------------------------------------------------------------- main
 
 def build_parser() -> argparse.ArgumentParser:
@@ -411,6 +511,29 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--lignes", type=float)
     s.add_argument("--mm", type=float)
     s.set_defaults(func=cmd_ligne)
+    s = sub.add_parser("tachy", help="tachymeter calculations")
+    s.add_argument("--seconds", type=float, help="elapsed seconds over the distance")
+    s.add_argument("--speed", type=float, help="units per hour, to get elapsed seconds")
+    s.add_argument("--distance", type=float, default=1.0, help="distance in units, default 1")
+    s.set_defaults(func=cmd_tachy)
+
+    s = sub.add_parser("telemeter", help="distance from sound delay")
+    s.add_argument("--seconds", type=float, required=True)
+    s.add_argument("--temp-c", type=float, default=20.0)
+    s.set_defaults(func=cmd_telemeter)
+
+    s = sub.add_parser("pendulum", help="pendulum period and length")
+    s.add_argument("--length-m", type=float)
+    s.add_argument("--period-s", type=float, help="full period; a seconds pendulum is 2")
+    s.add_argument("--gravity", type=float, default=9.80665)
+    s.set_defaults(func=cmd_pendulum)
+
+    s = sub.add_parser("fit", help="wrist and lug-to-lug rule of thumb")
+    g = s.add_mutually_exclusive_group(required=True)
+    g.add_argument("--wrist-mm", type=float, help="wrist circumference in mm")
+    g.add_argument("--wrist-in", type=float, help="wrist circumference in inches")
+    s.add_argument("--lug-to-lug", type=float, help="watch lug-to-lug in mm")
+    s.set_defaults(func=cmd_fit)
     return p
 
 

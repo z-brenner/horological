@@ -3,7 +3,7 @@ name: horological
 description: Expert help on any watch or clock question, including history, movements, complications, brands, references, prices, servicing, dating, authentication, and researching unknowns.
 license: MIT
 metadata:
-  version: 2.1.0
+  version: 2.2.0
   knowledge_snapshot: 2026-11
 ---
 
@@ -42,12 +42,14 @@ Read the matching reference file before answering anything beyond a one-line def
 | Case design, dimensions, materials, crystals, lume, water resistance | `references/cases-and-materials.md` |
 | Certifications, Swiss Made, Glashütte rule, ISO standards, hallmarks | `references/standards.md` |
 | Who owns which brand, movement suppliers, industry structure | `references/industry.md` |
+| A brand: its origin, reputation, ownership, tier, or collector shorthand | `references/brands.md` |
 | A specific caliber's specs, lineage or clones | `references/calibers.md` |
 | A specific iconic model or reference number | `references/references-and-models.md` |
 | Buying, prices, auctions, grey market, value drivers, investing | `references/collecting-and-market.md` |
 | Dating a watch, serial numbers, decoding dials and casebacks | `references/identification-and-dating.md` |
 | Real versus fake, redials, frankens, superclones | `references/authentication.md` |
 | Servicing, care, symptoms, repairs, DIY limits | `references/servicing-and-care.md` |
+| Straps, bracelet sizing, fit, modding, building a watch, learning watchmaking, tools | `references/workbench.md` |
 | Clocks of any kind, marine chronometers, pendulums, atomic time | `references/clocks.md` |
 | Correcting a popular belief | `references/myths.md` |
 | A term you need to define precisely | `references/glossary.md` |
@@ -164,10 +166,14 @@ Follow `references/research-playbook.md`. Never fill a gap with a plausible-soun
 - `seiko-serial`: decode a Seiko or Grand Seiko caseback serial into candidate production dates.
 - `gold`: convert karat and millesimal fineness.
 - `ligne`: convert lignes and millimeters for movement diameters.
+- `tachy`: tachymeter speed from elapsed time, or the reverse.
+- `telemeter`: distance from the delay between a flash and its sound.
+- `pendulum`: pendulum period from length, or length from period.
+- `fit`: rough maximum lug-to-lug for a wrist circumference, with a verdict for a given watch.
 
 ## Collection log
 
-`scripts/collection.py` is standard-library Python. Run `python3 scripts/collection.py --help`. Main commands: `init`, `profile --set key=value`, `add`, `update`, `acquire`, `dispose`, `service`, `note`, `list`, `show`, `log`, `summary`, `export`, `import`, `path`. The file defaults to `~/.horological/collection.json`, or `$HOROLOGICAL_HOME/collection.json`, and is never stored inside the skill folder.
+`scripts/collection.py` is standard-library Python. Run `python3 scripts/collection.py --help`. Main commands: `init`, `profile --set key=value`, `add`, `update`, `acquire`, `dispose`, `service`, `note`, `wear`, `rotation`, `list`, `show`, `log`, `summary`, `export`, `import`, `path`. The file defaults to `~/.horological/collection.json`, or `$HOROLOGICAL_HOME/collection.json`, and is never stored inside the skill folder.
 
 ## Style
 

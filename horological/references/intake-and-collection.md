@@ -154,13 +154,16 @@ Update the log when the user says so in passing, after a quick confirmation:
 - "I sold my Explorer": dispose with how=sold, and ask the price and reason only if they track them.
 - "Got my Seamaster serviced": record a service.
 - "I want a Grand Seiko eventually": add to wishlist.
+- "Wore the Speedmaster today": log a wear, if the user has opted into wear tracking.
+
+Wear tracking is optional. Offer it once during intake to users with several watches. `rotation` then shows which watches are neglected, how often each is worn, and cost per wear when a purchase price is recorded. That is useful evidence when the user asks what to sell or whether a new watch would get worn.
 
 Do not nag. A gentle check-in is fine when it helps, such as noting a mechanical watch with no service record in seven or more years. Never invent entries.
 
 ## 10. Using the profile in answers
 
 Use the log when it changes the answer:
-- Buying advice: avoid duplicating what they own, respect stated dislikes and wrist size, and stay inside the budget unless asked.
+- Buying advice: avoid duplicating what they own, respect stated dislikes and wrist size, and stay inside the budget unless asked. Check candidate watches against their wrist with `horocalc.py fit`.
 - Collection gaps: compare styles, movement types and use cases owned against their goals.
 - Servicing: flag watches due for service when they ask about care.
 - Explanations: pitch depth to their level, and use their own watches as examples, such as explaining a caller GMT using the GMT they own.
@@ -189,6 +192,8 @@ Do not bring up the collection on unrelated general questions.
 | `dispose <id> --how sold` | Record a sale, trade, gift or loss |
 | `service <id>` | Record a service |
 | `note <id> "text"` | Add a dated journal note |
+| `wear <id> --date YYYY-MM-DD` | Log a day the watch was worn |
+| `rotation` | Owned watches by days since worn, times worn, and cost per wear |
 | `list --status owned` | List watches |
 | `show <id>` | One watch with full history |
 | `log` | Chronological event log |

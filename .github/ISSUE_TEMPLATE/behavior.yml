@@ -1,0 +1,25 @@
+name: Bad answer
+description: Claude gave a poor answer while using the skill
+labels: [behavior]
+body:
+  - type: textarea
+    id: prompt
+    attributes:
+      label: What you asked
+    validations:
+      required: true
+  - type: textarea
+    id: got
+    attributes:
+      label: What Claude said
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What a good answer would be
+  - type: input
+    id: env
+    attributes:
+      label: Where you ran it
+      placeholder: Claude app, Claude Code, API

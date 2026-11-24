@@ -1,0 +1,30 @@
+name: Fact correction
+description: Something in the skill is wrong or out of date
+labels: [correction]
+body:
+  - type: input
+    id: file
+    attributes:
+      label: File and section
+      placeholder: references/calibers.md, Rolex table
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What it says now
+    validations:
+      required: true
+  - type: textarea
+    id: right
+    attributes:
+      label: What it should say
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A primary source is best, such as a patent, brand archive, catalog, standard or auction catalog.
+    validations:
+      required: true

@@ -82,6 +82,20 @@ class CollectionTests(unittest.TestCase):
         summary = json.loads(self.run_cmd("summary"))
         self.assertIn("rolex-explorer", summary["service_check_suggested"])
 
+    def test_wear_and_rotation(self):
+        self.run_cmd("add", "--brand", "Seiko", "--model", "Turtle", "--price", "300")
+        self.run_cmd("add", "--brand", "Timex", "--model", "Marlin")
+        self.run_cmd("wear", "seiko", "--date", "2026-01-01")
+        self.run_cmd("wear", "seiko", "--date", "2026-01-02")
+        self.run_cmd("wear", "seiko", "--date", "2026-01-02")
+        rows = json.loads(self.run_cmd("rotation"))
+        self.assertEqual(rows[0]["id"], "timex-marlin")
+        self.assertIsNone(rows[0]["last_worn"])
+        seiko = rows[1]
+        self.assertEqual(seiko["times_worn"], 2)
+        self.assertEqual(seiko["cost_per_wear"], 150)
+        self.assertEqual(json.loads(self.run_cmd("summary"))["most_worn"], ["Seiko Turtle: 2"])
+
     def test_bad_experience_rejected(self):
         with self.assertRaises(SystemExit):
             self.run_cmd("profile", "--set", "experience=grandmaster")

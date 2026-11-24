@@ -18,6 +18,8 @@ Commands
   dispose   Record a sale, trade, gift or loss.
   service   Record a service or repair.
   note      Add a dated note to a watch.
+  wear      Record that a watch was worn on a date.
+  rotation  Show owned watches by how recently and how often they were worn.
   list      List watches, optionally by status.
   show      Show one watch with its history.
   log       Show the event log.
@@ -280,6 +282,44 @@ def cmd_note(args, data, path):
     return True
 
 
+def cmd_wear(args, data, path):
+    watch = find(data, args.id)
+    date = args.date or today()
+    dt.date.fromisoformat(date)
+    worn = watch.setdefault("worn", [])
+    if date in worn:
+        print(f"{watch['id']} already logged as worn on {date}")
+        return False
+    worn.append(date)
+    worn.sort()
+    log_event(data, "wear", watch["id"], {"date": date})
+    print(f"Logged {watch['id']} worn on {date}")
+    return True
+
+
+def build_rotation(data: dict) -> list[dict]:
+    rows = []
+    for w in data["watches"]:
+        if w["status"] not in ACTIVE:
+            continue
+        worn = w.get("worn", [])
+        last = worn[-1] if worn else None
+        days = (dt.date.today() - dt.date.fromisoformat(last)).days if last else None
+        price = ((w.get("acquired") or {}).get("price") or {})
+        cost_per_wear = round(price["amount"] / len(worn), 2) if price.get("amount") and worn else None
+        rows.append({
+            "id": w["id"], "watch": describe(w), "times_worn": len(worn),
+            "last_worn": last, "days_since_worn": days, "cost_per_wear": cost_per_wear,
+        })
+    rows.sort(key=lambda r: (r["days_since_worn"] is not None, -(r["days_since_worn"] or 0)))
+    return rows
+
+
+def cmd_rotation(args, data, path):
+    print(json.dumps(build_rotation(data), indent=2, ensure_ascii=False))
+    return False
+
+
 def describe(w: dict) -> str:
     bits = [w.get("brand", ""), w.get("model", "")]
     if w.get("reference"):
@@ -357,6 +397,10 @@ def build_summary(data: dict) -> dict:
         "received_from_disposals": totals([w for w in ws if w["status"] in DISPOSED], "disposed", "price"),
         "wishlist": [describe(w) for w in ws if w["status"] in WANTED],
         "service_check_suggested": overdue,
+        "most_worn": [
+            f"{r['watch']}: {r['times_worn']}" for r in
+            sorted(build_rotation(data), key=lambda r: -r["times_worn"])[:3] if r["times_worn"]
+        ],
     }
 
 
@@ -514,6 +558,13 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("id")
     s.add_argument("text")
     s.set_defaults(func=cmd_note)
+
+    s = sub.add_parser("wear")
+    s.add_argument("id")
+    s.add_argument("--date", help="YYYY-MM-DD, default today")
+    s.set_defaults(func=cmd_wear)
+
+    sub.add_parser("rotation").set_defaults(func=cmd_rotation)
 
     s = sub.add_parser("list")
     s.add_argument("--status", help="comma-separated statuses")

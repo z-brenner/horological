@@ -1,0 +1,22 @@
+{
+  "name": "horological",
+  "owner": {
+    "name": "Zachary Brenner",
+    "url": "https://github.com/z-brenner"
+  },
+  "metadata": {
+    "description": "Horological: an expert watch and clock skill for Claude",
+    "version": "2.2.0"
+  },
+  "plugins": [
+    {
+      "name": "horological",
+      "description": "Expert watch and clock knowledge, a research playbook, a horology calculator, an adaptive intake, and a local collection log.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./horological"
+      ]
+    }
+  ]
+}

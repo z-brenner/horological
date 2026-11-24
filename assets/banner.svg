@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" role="img" aria-label="Horological: a watch and clock skill for Claude">
+  <rect width="1280" height="400" fill="#0f1720"/>
+  <g transform="translate(250 200)">
+    <circle r="150" fill="#16212d" stroke="#c9a45c" stroke-width="6"/>
+    <circle r="132" fill="none" stroke="#2b3a4a" stroke-width="2"/>
+    <g stroke="#e8e2d4" stroke-width="6" stroke-linecap="round">
+      <line y1="-126" y2="-104"/><line y1="104" y2="126"/>
+      <line x1="-126" x2="-104"/><line x1="104" x2="126"/>
+    </g>
+    <g stroke="#8fa0b3" stroke-width="3" stroke-linecap="round">
+      <line y1="-126" y2="-112" transform="rotate(30)"/><line y1="-126" y2="-112" transform="rotate(60)"/>
+      <line y1="-126" y2="-112" transform="rotate(120)"/><line y1="-126" y2="-112" transform="rotate(150)"/>
+      <line y1="-126" y2="-112" transform="rotate(210)"/><line y1="-126" y2="-112" transform="rotate(240)"/>
+      <line y1="-126" y2="-112" transform="rotate(300)"/><line y1="-126" y2="-112" transform="rotate(330)"/>
+    </g>
+    <line y1="12" y2="-72" stroke="#e8e2d4" stroke-width="9" stroke-linecap="round" transform="rotate(305)"/>
+    <line y1="16" y2="-108" stroke="#e8e2d4" stroke-width="6" stroke-linecap="round" transform="rotate(50)"/>
+    <line y1="28" y2="-118" stroke="#c9a45c" stroke-width="2.5" stroke-linecap="round" transform="rotate(180)"/>
+    <circle r="8" fill="#c9a45c"/>
+  </g>
+  <text x="470" y="185" font-family="Georgia, 'Times New Roman', serif" font-size="92" fill="#e8e2d4" letter-spacing="2">Horological</text>
+  <text x="474" y="245" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#8fa0b3">The watch and clock skill for Claude</text>
+  <text x="474" y="292" font-family="Helvetica, Arial, sans-serif" font-size="21" fill="#c9a45c">History · Movements · Calibers · Collecting · Dating · Servicing</text>
+</svg>

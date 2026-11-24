@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.2.0, November 2026
+
+- New reference: `brands.md`, a directory of more than 100 brands by country and tier with founding, specialties, ownership and collector shorthand.
+- New reference: `workbench.md`, covering fit, straps, spring bars, bracelet sizing, modding, parts compatibility, building a watch, learning watchmaking, tools and legal notes.
+- Calculator: added `tachy`, `telemeter`, `pendulum` and `fit`.
+- Collection log: added optional wear tracking with `wear` and `rotation`, including days since worn and cost per wear.
+- Installable as a Claude Code plugin through the repository's plugin marketplace file.
+- Repository: new README with banner, badges, quick install and FAQ; issue and pull request templates; code of conduct; security policy; release workflow that attaches the skill zip to tagged releases.
+
 ## 2.1.0, November 2026
 
 - Added an adaptive intake that learns the user's experience level, collection, tastes and goals, using tappable multiple-choice questions where supported.
