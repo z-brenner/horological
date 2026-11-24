@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Skill checks
+        run: python tools/check_skill.py
+      - name: Build skill zip
+        run: |
+          zip -r horological.zip horological -x "*/__pycache__/*"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: horological
+          path: horological.zip

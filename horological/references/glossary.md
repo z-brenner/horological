@@ -1,0 +1,133 @@
+# Glossary
+
+Alphabetical. Cross-references point to the file with the full explanation.
+
+- Adjusted: regulated for positions, temperature or isochronism. "Adjusted to five positions" is a common claim. See `accuracy-and-timing.md`.
+- Amplitude: how far the balance swings from rest, in degrees.
+- Anglage: hand-beveled and polished edges on movement parts.
+- Annual calendar: a calendar needing one correction a year, at the end of February.
+- Applied indices: hour markers attached to the dial rather than printed.
+- Arbor: an axle carrying a wheel.
+- AR coating: anti-reflective coating on a crystal.
+- Automatic: self-winding by a rotor or weight.
+- Balance cock: the bridge supporting the balance, fixed at one end.
+- Balance wheel: the oscillating wheel that, with the hairspring, keeps time.
+- Barrel: the drum housing the mainspring.
+- Beat error: asymmetry of the balance's swing, in milliseconds.
+- Bezel: the ring around the crystal.
+- Bi-compax: a two-subdial chronograph.
+- Bridge: a plate holding wheels, supported at both ends.
+- Breguet overcoil: a hairspring whose outer coil is raised and curved inward.
+- Bumper automatic: an early automatic with a weight swinging between buffer springs.
+- Caliber or calibre: a movement design.
+- California dial: Roman numerals on the top half of the dial and Arabic on the bottom.
+- Cannon pinion: the pinion carrying the minute hand, friction-fitted to allow setting.
+- Chapter ring: the ring of hour and minute markers.
+- Chronograph: a watch with a stopwatch function. See `complications.md`.
+- Chronometer: a precision watch certified by an official testing body, such as COSC.
+- Click: the pawl that stops the ratchet wheel unwinding.
+- Column wheel: a castellated wheel controlling chronograph functions.
+- Complication: any function beyond hours, minutes and seconds.
+- Côtes de Genève: Geneva stripes, a decorative finish.
+- Crown: the knob for winding and setting.
+- Crystal: the transparent cover over the dial.
+- Cyclops: Rolex's magnifying lens over the date.
+- Deployant clasp: a folding clasp.
+- Detent escapement: the chronometer escapement of marine chronometers.
+- Dial feet: pins on the back of a dial that locate it on the movement.
+- Display back: a caseback with a sapphire window.
+- DLC and PVD: hard coatings applied to cases and bracelets.
+- Ébauche: an unfinished movement supplied to a brand.
+- End link: the piece joining a bracelet to the case.
+- Equation of time: the difference between solar and mean time.
+- Escapement: the mechanism that releases the gear train in steps and impulses the balance.
+- Escape wheel: the toothed wheel of the escapement.
+- Fly-back: a chronograph that resets and restarts in one push.
+- Flyer GMT: a GMT whose local hour hand jumps independently.
+- Foliot: an early oscillating bar regulator.
+- Franken: a watch assembled from mismatched parts.
+- Free-sprung: a balance regulated by inertia rather than curb pins.
+- Fusee: a cone-shaped pulley with a chain that evens mainspring torque.
+- Gasket: a seal for water resistance.
+- Gilt dial: a dial with gold-colored printing made by a galvanic process.
+- GMT: a watch showing a second time zone on a 24-hour scale.
+- Going train: the gear train between barrel and escapement.
+- Grand complication: a watch combining several high complications. See `complications.md`.
+- Grand feu enamel: kiln-fired enamel dials.
+- Guilloché: engine-turned decorative patterns.
+- Hacking: stopping the seconds hand when setting the time.
+- Hairspring or balance spring: the spiral spring attached to the balance.
+- Hand-wound or manual: a watch wound only by the crown.
+- Helium escape valve: a valve releasing helium during decompression for saturation divers.
+- Hesalite: Omega's acrylic crystal.
+- Homage: a watch that copies another design without the brand name. Not a counterfeit, but debated ethically.
+- Horology: the study and science of timekeeping.
+- Impulse jewel or roller jewel: the jewel on the balance roller that engages the lever's fork.
+- In-house or manufacture: made by the brand itself; no legal definition.
+- Incabloc: the most common shock protection system.
+- Index: a regulator arm that adjusts the effective length of the hairspring.
+- Integrated bracelet: a bracelet designed as part of the case.
+- Isochronism: constant rate as amplitude changes.
+- Jewel: a synthetic ruby bearing.
+- Jumping hour: an hour shown in a window that jumps at the top of the hour.
+- Keyless works: the crown, stem and wheels used for winding and setting.
+- Lever: the pallet fork of the Swiss lever escapement.
+- Lift angle: the angle of balance contact with the lever; needed to compute amplitude on a timegrapher.
+- Ligne: an old French measure for movement diameter, 2.2558 mm.
+- Lug: the case projection holding the strap.
+- Lug-to-lug: the case's overall length.
+- Lume: luminous material. See `cases-and-materials.md`.
+- Mainspring: the coiled spring that powers a mechanical watch.
+- Mainplate: the base plate of a movement.
+- Meca-quartz: quartz timekeeping with a mechanical chronograph module.
+- Micro-rotor: a small rotor set into the movement.
+- Minute repeater: a chiming complication striking hours, quarters and minutes.
+- Monocoque: a one-piece case opened from the front.
+- Moonphase: a display of the lunar cycle.
+- Motion works: the gears driving the hour hand from the minute hand.
+- Movement: the internal mechanism of a watch.
+- NOS: new old stock.
+- Observatory chronometer: a specially adjusted watch for precision competitions.
+- Pallet fork: the lever in the escapement with two pallet stones.
+- Patina: the aging of a dial, lume, metal or strap.
+- Perlage: circular graining decoration.
+- Perpetual calendar: a calendar that accounts for leap years.
+- Pinion: a small gear with few teeth, called leaves.
+- Plexi: acrylic crystal.
+- Poise: the balance's even weight distribution around its axis.
+- Power reserve: how long a fully wound watch runs.
+- Pusher: a button operating a function.
+- Quickset: rapid date or day adjustment through the crown.
+- Rattrapante: a split-seconds chronograph.
+- Redial: a refinished dial.
+- Reference number: a model's identifying number.
+- Regulator: the index system on the balance, or a dial with separate hands for hours, minutes and seconds.
+- Rehaut: the inner flange around the dial.
+- Remontoir: a device that delivers constant force to the escapement.
+- Retrograde: a hand that sweeps an arc and snaps back.
+- Rotor: the oscillating weight of an automatic.
+- Sandwich dial: a dial with a cutout top layer over lume.
+- Sector dial: a dial with concentric rings dividing minutes and hours.
+- Service dial: a replacement dial fitted by the brand at service.
+- Shock protection: spring-loaded jewel settings protecting balance pivots.
+- Skeleton: a movement with material cut away to show the mechanism.
+- Slipping bridle: the friction end of an automatic mainspring that prevents overwinding.
+- Small seconds: a seconds hand in its own subdial.
+- Sonnerie: an automatic striking complication.
+- Spring bar: the spring-loaded pin attaching a strap.
+- Spring Drive: Seiko's mainspring-powered, quartz-regulated movement.
+- Stem: the shaft connecting the crown to the movement.
+- Subdial: a small auxiliary dial.
+- Superclone: a high-quality counterfeit.
+- Tachymeter: a scale for measuring speed.
+- Telemeter: a scale for measuring distance by sound delay.
+- Timegrapher: an instrument measuring rate, amplitude and beat error.
+- Tonneau: a barrel-shaped case.
+- Tourbillon: a rotating cage for the escapement. See `complications.md`.
+- Tri-compax: a three-subdial chronograph.
+- Tropical dial: a dial that has faded, often from black to brown.
+- Unidirectional bezel: a bezel that rotates in one direction for dive timing.
+- Vertical clutch: a friction coupling for chronographs.
+- Vph: vibrations per hour; two vibrations make one oscillation.
+- Winding stem: see stem.
+- World timer: a watch showing all time zones at once.

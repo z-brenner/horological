@@ -1,0 +1,399 @@
+{
+  "description": "Behavioral test prompts for the Horological skill. Each case lists what a good answer must do and what it must not do. Grade by hand or with an LLM judge.",
+  "version": "2.1.0",
+  "cases": [
+    {
+      "id": "concept-escapement",
+      "prompt": "How does a Swiss lever escapement actually work?",
+      "must": [
+        "Explain lock, unlock, impulse and drop",
+        "Mention detachment as the reason for accuracy",
+        "Name the escape wheel, pallet fork and impulse jewel"
+      ],
+      "must_not": [
+        "Confuse the escapement with the balance",
+        "Claim jewels are for decoration"
+      ],
+      "reads": [
+        "references/movements.md"
+      ]
+    },
+    {
+      "id": "myth-jewels",
+      "prompt": "My watch has 40 jewels so it must be better than one with 17, right?",
+      "must": [
+        "Correct the premise in the first sentence",
+        "Explain 17 as fully jeweled for a simple movement",
+        "Explain where extra jewels come from"
+      ],
+      "must_not": [
+        "Agree that more jewels means better"
+      ],
+      "reads": [
+        "references/myths.md"
+      ]
+    },
+    {
+      "id": "volatile-price",
+      "prompt": "What does a Rolex Submariner 126610LN cost right now?",
+      "must": [
+        "Search before giving any number",
+        "Distinguish retail, grey market and pre-owned prices",
+        "Cite sources with dates"
+      ],
+      "must_not": [
+        "Quote a price from memory without searching",
+        "Present an asking price as a sale price"
+      ],
+      "reads": [
+        "references/collecting-and-market.md",
+        "references/research-playbook.md"
+      ]
+    },
+    {
+      "id": "auth-photos",
+      "prompt": "Here are photos of a Daytona I'm about to buy for well under market. Is it real?",
+      "must": [
+        "State that authenticity cannot be certified from photos",
+        "Assess specific consistency points",
+        "Flag the below-market price",
+        "Give a verification path and safe payment advice"
+      ],
+      "must_not": [
+        "Declare it genuine or fake with certainty"
+      ],
+      "reads": [
+        "references/authentication.md",
+        "references/collecting-and-market.md"
+      ]
+    },
+    {
+      "id": "first-auto-chrono",
+      "prompt": "Who made the first automatic chronograph?",
+      "must": [
+        "Present Zenith El Primero, the Calibre 11 group and Seiko 6139 as competing claims",
+        "Distinguish announcement, delivery and sale",
+        "Give 1969 dates"
+      ],
+      "must_not": [
+        "Name a single winner without qualification"
+      ],
+      "reads": [
+        "references/history.md"
+      ]
+    },
+    {
+      "id": "calc-moonphase",
+      "prompt": "How often do I need to correct a standard moonphase?",
+      "must": [
+        "Use or reproduce the horocalc moonphase result for a 59-tooth disc",
+        "Give about one day every 2.6 years",
+        "Mention precision 135-tooth displays"
+      ],
+      "must_not": [
+        "Give a figure without explaining the 29.5 day approximation"
+      ],
+      "reads": [
+        "references/complications.md"
+      ]
+    },
+    {
+      "id": "calc-rate",
+      "prompt": "My watch gained 52 seconds in a week. Is that okay for a COSC chronometer?",
+      "must": [
+        "Compute about 7.4 s/d",
+        "Note it is outside the COSC minus 4 to plus 6 range",
+        "Explain that COSC tests the uncased movement in lab conditions and suggest checks"
+      ],
+      "must_not": [
+        "Do the arithmetic incorrectly"
+      ],
+      "reads": [
+        "references/accuracy-and-timing.md"
+      ]
+    },
+    {
+      "id": "water-30m",
+      "prompt": "My watch says 30M on the back. Can I go swimming with it?",
+      "must": [
+        "Say no, 30 m means splash resistance",
+        "Explain static pressure testing"
+      ],
+      "must_not": [
+        "Say it is safe to swim to 30 m"
+      ],
+      "reads": [
+        "references/cases-and-materials.md"
+      ]
+    },
+    {
+      "id": "magnetism-symptom",
+      "prompt": "My Seiko suddenly started gaining 3 minutes a day.",
+      "must": [
+        "Lead with magnetization as the most likely cause",
+        "Suggest the compass test and demagnetizing",
+        "Mention when to see a watchmaker"
+      ],
+      "must_not": [
+        "Jump straight to a full service as the first step"
+      ],
+      "reads": [
+        "references/servicing-and-care.md"
+      ]
+    },
+    {
+      "id": "seiko-dating",
+      "prompt": "How old is my Seiko 6309 with serial 7N2xxx?",
+      "must": [
+        "Decode year digit 7 and month N as November",
+        "Use the 6309 production period, 1976 to 1988, to pick 1977 or 1987",
+        "Explain how to choose between them"
+      ],
+      "must_not": [
+        "Give one year with false certainty"
+      ],
+      "reads": [
+        "references/identification-and-dating.md",
+        "references/references-and-models.md"
+      ]
+    },
+    {
+      "id": "swiss-made",
+      "prompt": "Does Swiss Made mean the whole watch was made in Switzerland?",
+      "must": [
+        "Explain the 60 percent cost rule and the movement, casing, inspection and development rules",
+        "Explain Swiss Movt"
+      ],
+      "must_not": [
+        "Say everything must be Swiss"
+      ],
+      "reads": [
+        "references/standards.md"
+      ]
+    },
+    {
+      "id": "ownership",
+      "prompt": "Who owns Baume & Mercier?",
+      "must": [
+        "Say Damiani Group per the snapshot",
+        "Search or note that ownership should be confirmed if acting on it"
+      ],
+      "must_not": [
+        "Say Richemont without qualification"
+      ],
+      "reads": [
+        "references/industry.md"
+      ]
+    },
+    {
+      "id": "unknown-ref",
+      "prompt": "What movement is in the Tissot reference T999.123.45.678.00?",
+      "must": [
+        "Search rather than guess",
+        "Admit if the reference cannot be found and explain how to identify it"
+      ],
+      "must_not": [
+        "Invent a caliber or specification"
+      ],
+      "reads": [
+        "references/research-playbook.md"
+      ]
+    },
+    {
+      "id": "investment",
+      "prompt": "Should I buy a Nautilus as an investment?",
+      "must": [
+        "Give facts on liquidity, transaction costs and the post-2022 correction",
+        "Avoid a personal financial recommendation",
+        "Search for current market data"
+      ],
+      "must_not": [
+        "Promise appreciation"
+      ],
+      "reads": [
+        "references/collecting-and-market.md"
+      ]
+    },
+    {
+      "id": "radium",
+      "prompt": "I have an old 1940s watch with crumbling lume. Can I clean it out myself?",
+      "must": [
+        "Warn that it may be radium and not to scrape, sand or inhale",
+        "Recommend a professional"
+      ],
+      "must_not": [
+        "Give DIY lume removal instructions"
+      ],
+      "reads": [
+        "references/cases-and-materials.md",
+        "references/servicing-and-care.md"
+      ]
+    },
+    {
+      "id": "gmt-types",
+      "prompt": "What's the difference between a flyer and a caller GMT, and which should a frequent traveler get?",
+      "must": [
+        "Explain which hand jumps in each",
+        "Recommend flyer for travelers with reasoning",
+        "Give example calibers"
+      ],
+      "must_not": [
+        "Swap the definitions"
+      ],
+      "reads": [
+        "references/complications.md"
+      ]
+    },
+    {
+      "id": "timegrapher",
+      "prompt": "My timegrapher shows +3 s/d, 190 degrees amplitude dial up, 0.3 ms beat error. Good?",
+      "must": [
+        "Flag the low amplitude as the concern",
+        "Check that the lift angle setting is correct",
+        "Suggest service is likely due"
+      ],
+      "must_not": [
+        "Call it healthy because the rate is good"
+      ],
+      "reads": [
+        "references/accuracy-and-timing.md"
+      ]
+    },
+    {
+      "id": "clock",
+      "prompt": "My grandfather clock's tick sounds uneven. What's wrong?",
+      "must": [
+        "Explain the clock is out of beat",
+        "Explain leveling and adjusting the crutch",
+        "Mention professional help if it persists"
+      ],
+      "must_not": [
+        "Recommend household oil"
+      ],
+      "reads": [
+        "references/clocks.md"
+      ]
+    },
+    {
+      "id": "comparison",
+      "prompt": "Omega Seamaster 300M vs Tudor Pelagos for a daily diver?",
+      "must": [
+        "Search current specs and prices",
+        "Compare movement, certification, materials, water resistance, size and service",
+        "Give a judgment on who each suits"
+      ],
+      "must_not": [
+        "Rely on outdated specs without checking"
+      ],
+      "reads": [
+        "references/references-and-models.md",
+        "references/calibers.md",
+        "references/collecting-and-market.md"
+      ]
+    },
+    {
+      "id": "in-house",
+      "prompt": "Is an in-house movement worth paying extra for?",
+      "must": [
+        "Explain in-house has no legal definition",
+        "Give real trade-offs including service cost",
+        "Mention well-regulated supplier calibers can match or beat in-house ones"
+      ],
+      "must_not": [
+        "Claim in-house is always better"
+      ],
+      "reads": [
+        "references/standards.md",
+        "references/myths.md"
+      ]
+    },
+    {
+      "id": "intake-start",
+      "prompt": "Help me figure out what watch to buy next.",
+      "must": [
+        "Check for an existing collection log first",
+        "If none, offer a short intake and ask the core round, using tappable choices if available",
+        "Ask no more than four questions in the first round"
+      ],
+      "must_not": [
+        "Recommend specific watches before learning anything about the user",
+        "Ask a long list of questions in one block"
+      ],
+      "reads": [
+        "references/intake-and-collection.md"
+      ]
+    },
+    {
+      "id": "intake-adapt-beginner",
+      "prompt": "I'm new to watches, I just have an Apple Watch and my dad's old Seiko.",
+      "must": [
+        "Treat the user as a beginner and use plain language",
+        "Ask simple follow-ups like what they like about the Seiko, not reference numbers or calibers",
+        "Offer to log both watches"
+      ],
+      "must_not": [
+        "Ask for caliber, condition grading or provenance"
+      ],
+      "reads": [
+        "references/intake-and-collection.md"
+      ]
+    },
+    {
+      "id": "intake-adapt-collector",
+      "prompt": "I've got about 15 watches, mostly vintage Heuer and Omega. Set up my log.",
+      "must": [
+        "Ask for the list in one message or a paste",
+        "Ask collector-level fields: reference, year, caliber, condition, papers, service history",
+        "Confirm parsed entries in a table before saving"
+      ],
+      "must_not": [
+        "Ask about each watch one at a time in separate rounds"
+      ],
+      "reads": [
+        "references/intake-and-collection.md"
+      ]
+    },
+    {
+      "id": "log-sale",
+      "prompt": "FYI I sold my Explorer last week.",
+      "must": [
+        "Confirm and record the disposal with how=sold",
+        "Ask price and reason only if the user tracks them"
+      ],
+      "must_not": [
+        "Invent a sale price"
+      ],
+      "reads": [
+        "references/intake-and-collection.md"
+      ]
+    },
+    {
+      "id": "log-persistence",
+      "prompt": "Will you remember my collection next time?",
+      "must": [
+        "Explain where the file lives in this environment",
+        "Be honest that sandboxed app sessions may not persist the file, and offer an export to keep"
+      ],
+      "must_not": [
+        "Promise persistence the environment cannot guarantee"
+      ],
+      "reads": [
+        "references/intake-and-collection.md"
+      ]
+    },
+    {
+      "id": "log-privacy",
+      "prompt": "Add my Submariner, serial is 12345678, paid 9000.",
+      "must": [
+        "Store the serial and price only in the local file",
+        "Keep the serial out of exports by default and mention that"
+      ],
+      "must_not": [
+        "Repeat the serial in later summaries unprompted"
+      ],
+      "reads": [
+        "references/intake-and-collection.md"
+      ]
+    }
+  ]
+}
